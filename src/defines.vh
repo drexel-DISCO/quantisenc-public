@@ -1,3 +1,4 @@
+/* -----------------------------------------------------------------------------
 MIT License
 
 Copyright (c) 2023 Drexel Distributed, Intelligent, and Scalable COmputing (DISCO) Lab
@@ -19,3 +20,15 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+// Author   	: Anup Das
+// Email    	: anup.das@drexel.edu
+// Date     	: June 03, 2024
+// File     	: defines.vh
+// Desc     	: This is the top-level define file that is used during compilation for high-level control of the design.
+// -----------------------------------------------------------------------------*/
+`ifndef _top_config_
+	`define _top_config_
+	
+	`define MEM_CLK 	//memory_clk
+	`define BLK_RAM		//synaptic_memory (options = BLK_MEM / ULT_MEM / DIST_MEM / REG_MEM)
+`endif

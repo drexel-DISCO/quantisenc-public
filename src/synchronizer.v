@@ -1,3 +1,4 @@
+/* -----------------------------------------------------------------------------
 MIT License
 
 Copyright (c) 2023 Drexel Distributed, Intelligent, and Scalable COmputing (DISCO) Lab
@@ -19,3 +20,38 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+// Author   	: Anup Das
+// Email    	: anup.das@drexel.edu
+// Date     	: June 03, 2024
+// File     	: synchronizer.v
+// Desc     	: This is an implementation of cross domain data synchronizer.
+// 		          This implements double flip-flop synchronization.
+// -----------------------------------------------------------------------------*/
+`timescale 1ns / 1ps
+
+module synchronizer #(
+	//Parameterized values
+	parameter N = 8
+	)(
+	input rst,
+	input clk,
+	input  [N-1:0]	in,	//input
+	output [N-1:0] 	out	//output
+	);
+
+	reg [N-1:0] in_q1, in_q2;
+
+	always @(posedge clk or posedge rst) begin
+		if (rst) begin
+			in_q1 	<= 0;
+			in_q2	<= 0;
+		end
+		else begin
+			in_q1	<= in;
+			in_q2	<= in_q1;
+		end
+	end
+
+	assign out = in_q2;
+
+endmodule
